@@ -1,11 +1,12 @@
 def valid_passphrase?(passphrase)
-  passphrase.split.uniq.count == passphrase.split.count
+  phrases = passphrase.split.map { |x| x.chars.sort.join }
+  phrases.count == phrases.uniq.count
 end
 
 PHRASES = [
-  "aa bb cc dd ee",
-  "aa bb cc dd aa",
-  "aa bb cc dd aaa"
+  "abcde fghij",
+  "abcde xyz ecdab",
+  "a ab abc abd abf abj"
 ]
 
 puts PHRASES.select{ |phrase| valid_passphrase?(phrase) }.count
