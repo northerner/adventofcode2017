@@ -10,7 +10,9 @@ def step_count(instructions_string)
     in_bounds = (0..instructions.size-1).include?(next_location)
 
     if in_bounds
-      instructions[location] = instructions[location] + 1
+      change_by = instructions[location] >= 3 ? -1 : 1
+      instructions[location] = instructions[location] + change_by
+
       location = next_location
     end
   end
