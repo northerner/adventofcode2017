@@ -15,11 +15,11 @@ end
 
 def find_loop(bank, log = [])
   if log.include?(bank)
-    log.length
+    log.length - log.find_index(bank)
   else
     next_bank = reallocate(bank)
     find_loop(next_bank, log + [bank])
   end
 end
 
-puts find_loop("0 2 7 0".split.map(&:to_i))
+puts find_loop("2 4 1 2".split.map(&:to_i))
